@@ -4,14 +4,13 @@ import socketIOClient from "socket.io-client";
 const endpoint = 'http://localhost:4001'
 
 const socket = socketIOClient(endpoint)
-const emitClickEvent = (data, cb) => socket.emit('data', data, cb)
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {chat: ['testing'], input: ''}
-    socket.on('init', chat => {
-      console.log('received init', chat)
+    this.state = {chat: [], input: ''}
+    socket.on('update chat', chat => {
+      console.log('received chat data', chat)
       this.setState({chat})
     })
     this.onInputChange = this.onInputChange.bind(this)
@@ -23,7 +22,7 @@ class App extends React.Component {
   }
 
   onSubmit() {
-    emitClickEvent(this.state.input, chat => {this.setState({chat})})
+    socket.emit('data', this.state.input)
     this.setState({input: ''})
   }
 
