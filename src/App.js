@@ -31,8 +31,8 @@ class App extends React.Component {
       <div style={{ textAlign: "center" }}>
         <input value={this.state.input} onChange={this.onInputChange}/>
         <button onClick={this.onSubmit}>test</button>
-        {this.state.chat.map((c, i) =>
-          <div key={`chat-${i}`}>{c}</div>)
+        {this.state.chat.map(message =>
+          <div key={`chat-${message.id}`}>{message.body}</div>)
         }
       </div>
     )
