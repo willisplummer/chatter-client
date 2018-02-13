@@ -29,6 +29,7 @@ class App extends React.Component {
     this.onAvatarUrlInputChange = this.onAvatarUrlInputChange.bind(this)
     this.toggleEditingAvatarUrl = this.toggleEditingAvatarUrl.bind(this)
     this.setAvatarUrl = this.setAvatarUrl.bind(this)
+    this.onEnterPress = this.onEnterPress.bind(this)
   }
 
   setAvatarUrl() {
@@ -51,7 +52,18 @@ class App extends React.Component {
     this.setState({ input: event.target.value })
   }
 
-  onSubmit() {
+  onEnterPress(event) {
+    if(event.keyCode === 13 && event.shiftKey === false) {
+      event.preventDefault();
+      this.onSubmit()
+    }
+  }
+
+  onSubmit(event) {
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
     const body = this.state.input
     const nickname = ''
     const avatarUrl = this.state.avatarUrl
@@ -78,11 +90,11 @@ class App extends React.Component {
         </div>
         <div className="message-input">
           { this.state.editingAvatar ?
-            <div>
+            <div className="avatar-edit">
               <input placeholder="image url" value={this.state.avatarUrlInput} onChange={this.onAvatarUrlInputChange} />
               <button onClick={this.setAvatarUrl}>done</button>
             </div> :
-            <div>
+            <div className="avatar-edit">
               <img
                 ref={'my-avatar'}
                 alt="avatar"
@@ -93,8 +105,10 @@ class App extends React.Component {
               <button onClick={this.toggleEditingAvatarUrl}>edit</button>
             </div>
           }
-          <textarea rows="7" value={this.state.input} onChange={this.onInputChange}/>
-          <button onClick={this.onSubmit}>submit</button>
+          <form onSubmit={this.onSubmit} ref="new-message-form">
+            <textarea rows="4" value={this.state.input} onChange={this.onInputChange} onKeyDown={this.onEnterPress}/>
+            <button type="submit">submit</button>
+          </form>
         </div>
       </div>
     )
