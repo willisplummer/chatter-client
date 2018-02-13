@@ -76,7 +76,7 @@ html {
   font-size: 14px;
 }
 
-.avatar-edit {
+.user-count, .avatar-edit {
   display: none;
 }
 
@@ -100,5 +100,9 @@ html {
     margin: 0px 10px;
     padding: 15px;
     font-size: 14px;
+  }
+
+  .user-count {
+    display: block;
   }
 }

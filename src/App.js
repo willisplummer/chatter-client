@@ -113,8 +113,8 @@ class App extends React.Component {
           <form onSubmit={this.onSubmit}>
             <textarea rows="4" value={this.state.input} onChange={this.onInputChange} onKeyDown={this.onEnterPress}/>
           </form>
-          <div>
-            {this.state.userCount} people in the room
+          <div className="user-count">
+            {this.state.userCount} {this.state.userCount === 1 ? 'person' : 'people'} in the room
           </div>
         </div>
       </div>
