@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      avatarUrl: '',
+      avatarUrl: window.localStorage.getItem('chatterAvatarUrl') || '',
       avatarUrlInput: '',
       chat: [],
       editingAvatar: false,
@@ -24,6 +24,7 @@ class App extends React.Component {
       console.log('received chat data', chat)
       this.setState({chat})
     })
+
     this.onInputChange = this.onInputChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
     this.onAvatarUrlInputChange = this.onAvatarUrlInputChange.bind(this)
@@ -33,6 +34,7 @@ class App extends React.Component {
   }
 
   setAvatarUrl() {
+    window.localStorage.setItem('chatterAvatarUrl', this.state.avatarUrlInput)
     this.setState({
       avatarUrl: this.state.avatarUrlInput,
       editingAvatar: false,
@@ -75,7 +77,7 @@ class App extends React.Component {
     return (
       <div style={{ textAlign: "center" }}>
         <div className="messages">
-          {this.state.chat.map((message, i) =>
+          {this.state.chat.filter(m => m.room_id === room).map((message, i) =>
             <div className={i%2 === 0 ? "message white" : "message lightblue"} key={`chat-${message.id}`}>
               <img
                 ref={message.id}
