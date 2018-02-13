@@ -18,7 +18,8 @@ class App extends React.Component {
       avatarUrlInput: '',
       chat: [],
       editingAvatar: false,
-      input: ''
+      input: '',
+      userCount: 1
     }
     socket.on('update chat', chat => {
       console.log('received chat data', chat)
@@ -88,7 +89,7 @@ class App extends React.Component {
                 src={message.avatar}
                 onError={(e) => {this.refs[message.id].src = DEFAULT_AVATAR_URL}}
               />
-              <span className="message-body">{message.body}</span>
+              <p className="message-body">{message.body}</p>
             </div>)
           }
         </div>
@@ -112,6 +113,9 @@ class App extends React.Component {
           <form onSubmit={this.onSubmit}>
             <textarea rows="4" value={this.state.input} onChange={this.onInputChange} onKeyDown={this.onEnterPress}/>
           </form>
+          <div>
+            {this.state.userCount} people in the room
+          </div>
         </div>
       </div>
     )
