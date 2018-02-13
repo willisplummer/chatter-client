@@ -9,10 +9,12 @@ html {
 }
 
 .messages {
-  padding: 0px 50px;
-  height: 90%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0px 50px 10px;
+  height: 85%;
   overflow: scroll;
-  margin-bottom: 140px;
 }
 
 .avatar {
@@ -48,6 +50,7 @@ html {
 .message-input {
   position: fixed;
   bottom: 0;
+  height: 15%;
   width: 100%;
   border-top: solid black 1px;
   padding: 10px 0px;

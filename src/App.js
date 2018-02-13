@@ -23,6 +23,8 @@ class App extends React.Component {
     socket.on('update chat', chat => {
       console.log('received chat data', chat)
       this.setState({chat})
+      const messagesElement = document.getElementsByClassName("messages")[0]
+      messagesElement.scrollTop = messagesElement.scrollHeight
     })
 
     this.onInputChange = this.onInputChange.bind(this)
