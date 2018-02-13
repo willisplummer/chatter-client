@@ -65,7 +65,13 @@ class App extends React.Component {
         <div className="messages">
           {this.state.chat.map((message, i) =>
             <div className={i%2 === 0 ? "message white" : "message lightblue"} key={`chat-${message.id}`}>
-              <img ref={message.id} alt="avatar" className="avatar" src={message.avatar} onError={(e) => {this.refs[message.id].src = 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'}} />
+              <img
+                ref={message.id}
+                alt="avatar"
+                className="avatar"
+                src={message.avatar}
+                onError={(e) => {this.refs[message.id].src = DEFAULT_AVATAR_URL}}
+              />
               <span className="message-body">{message.body}</span>
             </div>)
           }
@@ -77,7 +83,13 @@ class App extends React.Component {
               <button onClick={this.setAvatarUrl}>done</button>
             </div> :
             <div>
-              <img ref={'my-avatar'} alt="avatar" className="avatar" src={this.state.avatarUrl} onError={(e) => {this.refs['my-avatar'].src = 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'}} />
+              <img
+                ref={'my-avatar'}
+                alt="avatar"
+                className="avatar"
+                src={this.state.avatarUrl}
+                onError={(e) => {this.refs['my-avatar'].src = DEFAULT_AVATAR_URL}}
+              />
               <button onClick={this.toggleEditingAvatarUrl}>edit</button>
             </div>
           }
