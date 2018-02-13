@@ -2,6 +2,8 @@ import React from "react";
 import socketIOClient from "socket.io-client";
 import './App.css';
 
+const DEFAULT_AVATAR_URL = 'https://pbs.twimg.com/media/C8fPgCGU0AABzPa.jpg'
+
 // const endpoint = 'http://localhost:4001'
 const endpoint = 'https://cryptic-plains-73206.herokuapp.com/'
 
