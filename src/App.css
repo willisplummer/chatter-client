@@ -24,6 +24,11 @@ html {
 .message {
   display: flex;
   align-items: center;
+  line-height: 1.5;
+}
+
+.message img {
+  align-self: flex-start;
 }
 
 .message-body {

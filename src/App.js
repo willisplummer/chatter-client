@@ -105,9 +105,8 @@ class App extends React.Component {
               <button onClick={this.toggleEditingAvatarUrl}>edit</button>
             </div>
           }
-          <form onSubmit={this.onSubmit} ref="new-message-form">
+          <form onSubmit={this.onSubmit}>
             <textarea rows="4" value={this.state.input} onChange={this.onInputChange} onKeyDown={this.onEnterPress}/>
-            <button type="submit">submit</button>
           </form>
         </div>
       </div>
