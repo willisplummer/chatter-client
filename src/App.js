@@ -79,7 +79,7 @@ class App extends React.Component {
         <div className="message-input">
           { this.state.editingAvatar ?
             <div>
-              <input value={this.state.avatarUrlInput} onChange={this.onAvatarUrlInputChange} />
+              <input placeholder="image url" value={this.state.avatarUrlInput} onChange={this.onAvatarUrlInputChange} />
               <button onClick={this.setAvatarUrl}>done</button>
             </div> :
             <div>
