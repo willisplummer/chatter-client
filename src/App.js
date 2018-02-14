@@ -27,6 +27,10 @@ class App extends React.Component {
       const messagesElement = document.getElementsByClassName("messages")[0]
       messagesElement.scrollTop = messagesElement.scrollHeight
     })
+    socket.on('update userCount', userCount => {
+      console.log('received count data', userCount)
+      this.setState({userCount})
+    })
 
     this.onInputChange = this.onInputChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
